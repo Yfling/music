@@ -1,5 +1,3 @@
-'use strict';
-
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -10,7 +8,7 @@ module.exports = {
         'webpack-dev-server/client?http://localhost:3000',
         'webpack/hot/only-dev-server',
         'react-hot-loader/patch',
-        path.join(__dirname, 'app/final/index.js')
+        path.join(__dirname, 'app/index.js')
     ],
     output: {
         path: path.join(__dirname, '/dist/'),
@@ -19,7 +17,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-          template: './app/index.tpl.html',
+          template: './index.tpl.html',
           inject: 'body',
           filename: './index.html'
         }),
@@ -31,9 +29,6 @@ module.exports = {
         })
     ],
     module: {
-        resolve:{
-            extensions:['','.js','.json']
-        },
         loaders: [
             {
               test: /\.js$/,
@@ -43,10 +38,6 @@ module.exports = {
                 {
                   presets:['react','es2015']
                 }
-            },
-            {
-                test: /\.json?$/,
-                loader: 'json'
             },
             {
                 test: /\.css$/,
